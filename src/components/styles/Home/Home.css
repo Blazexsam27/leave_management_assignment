@@ -1,0 +1,35 @@
+.home-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 85vh;
+}
+
+.home-container .header{
+    font-size: 9rem;
+    font-family: var(--source-sans-font);
+}
+.home-container .header span{
+    color: var(--ufo-green);
+}
+
+.home-container .menu-btns{
+    display: flex;   
+}
+
+.home-container .menu-btns button{
+    margin: 5px;
+    padding: 7px 15px;
+    border-radius: 7px;
+    border: none;
+    background: var(--ufo-green);
+    color: var(--subheader-color);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.home-container .menu-btns button:hover{
+    background: var(--neprithis-green);
+    transition: 0.5s;
+}
