@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Auth/SignIn.css";
 import signin from "../../assets/images/sign_in.png";
+import { saveTokens } from "../../services/authServices";
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({
@@ -48,10 +51,16 @@ export default function SignIn() {
           }),
         }
       ).then((response) => {
-        response.json().then((result) => console.log(result));
+        response.json().then((result) => {
+          saveTokens(result);
+        });
       });
     }
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("access-token")) navigate("/");
+  }, [localStorage.getItem("access-token")]);
 
   return (
     <div className="signin-container">
