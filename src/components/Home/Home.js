@@ -1,7 +1,21 @@
 import React from "react";
-import SignIn from "../Auth/SignIn.js";
+import { Link } from "react-router-dom";
 import "../styles/Home/Home.css";
 
 export default function Home() {
-  return <p>HOME</p>;
+  return (
+    <div className="home-container">
+      <div className="header">
+        LEAVE <span>MANAGEMENT</span>
+      </div>
+      <div className="menu-btns">
+        <Link to={"/signin"}>
+          <button>Sign In</button>
+        </Link>
+        <Link to={"/signup"}>
+          <button>Sign Up</button>
+        </Link>
+      </div>
+    </div>
+  );
 }
