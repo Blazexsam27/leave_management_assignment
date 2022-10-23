@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/Auth/SignIn.css";
 import signin from "../../assets/images/sign_in.png";
 import { saveTokens } from "../../services/authServices";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -59,7 +59,7 @@ export default function SignIn() {
   };
 
   useEffect(() => {
-    if (localStorage.getItem("access-token")) navigate("/");
+    // if (localStorage.getItem("access-token")) navigate("/");
   }, [localStorage.getItem("access-token")]);
 
   return (
@@ -70,7 +70,7 @@ export default function SignIn() {
         </p>
       </div>
       <div className="auth-form-container">
-        <p className="header">Sign In</p>
+        <p className="signin-header">Sign In</p>
         <form className="signin-form" onSubmit={handleSubmit}>
           <img className="signin-image" src={signin} alt="Sign In Image" />
           <label htmlFor="email">Email: </label>
@@ -98,6 +98,9 @@ export default function SignIn() {
           <button className="submit-button" type="submit">
             Sign In
           </button>
+          <Link to={"/signup"} className="create-account-btn">
+            Create Account
+          </Link>
         </form>
       </div>
     </div>

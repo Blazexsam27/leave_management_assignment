@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/Auth/SignUp.css";
 import signup from "../../assets/images/sign_up.png";
 import { saveTokens } from "../../services/authServices";
+import { Link } from "react-router-dom";
 
 export default function SignUp() {
   const [name, setName] = useState("");
@@ -71,7 +72,7 @@ export default function SignUp() {
         </p>
       </div>
       <div className="auth-form-container">
-        <p className="header">Sign Up</p>
+        <p className="signup-header">Sign Up</p>
         <form className="signup-form" onSubmit={handleSubmit}>
           <img className="signup-image" src={signup} alt="Sign Up Image" />
           <label htmlFor="name">Name: </label>
@@ -106,7 +107,10 @@ export default function SignUp() {
             required
           />
           <span style={{ color: "red" }}>{errors["password"]}</span>
-          <button className="submit-button">Sign Up</button>
+          <button className="submit-button">Sign Up</button>{" "}
+          <Link to={"/signin"} className="login-account-btn">
+            Sign in
+          </Link>
         </form>
       </div>
     </div>

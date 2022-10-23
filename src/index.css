@@ -40,8 +40,20 @@ html{
   font-size: 62.5%;
 }
 
-@media (max-width: 768px){
+@media (max-width: 1000px){
   html{
     font-size: 50%;
+  }
+}
+
+@media (max-width: 768px){
+  html{
+    font-size: 37.5%;
+  }
+}
+
+@media (max-width: 500px){
+  html{
+    font-size: 20%;
   }
 }
