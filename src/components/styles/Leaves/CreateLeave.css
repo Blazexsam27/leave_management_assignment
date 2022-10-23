@@ -1,0 +1,48 @@
+.create-leave-container{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.create-leave-container .header{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-leave-container .header p{
+    font-size: 8rem;
+    font-family: var(--source-sans-font);
+}
+
+.create-leave-container .header p span{
+    color: var(--header-color);
+}
+
+.create-leave-container .leave-form{
+    width: 50%;
+    background: var(--asphalt-color);
+}
+
+.create-leave-container .leave-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.create-leave-container .leave-form .create-leave-form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 50vh;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 7px;
+}
+
+.create-leave-container .leave-form .create-leave-form label{
+    font-size: 1.2rem;
+}

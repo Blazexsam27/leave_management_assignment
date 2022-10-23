@@ -1,0 +1,49 @@
+.edit-leave-container{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.edit-leave-container .header{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-leave-container .header p{
+    font-size: 8rem;
+    font-family: var(--source-sans-font);
+}
+
+.edit-leave-container .header p span{
+    color: var(--header-color);
+}
+
+.edit-leave-container .leave-form{
+    width: 50%;
+    background: var(--asphalt-color);
+}
+
+
+.edit-leave-container .leave-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.edit-leave-container .leave-form .edit-leave-form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 50vh;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 7px;
+}
+
+.edit-leave-container .leave-form .edit-leave-form label{
+    font-size: 1.2rem;
+}
