@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Auth/SignUp.css";
 import signup from "../../assets/images/sign_up.png";
+import { saveTokens } from "../../services/authServices";
 
 export default function SignUp() {
   const [name, setName] = useState("");
@@ -57,7 +58,7 @@ export default function SignUp() {
           },
         }),
       }).then((response) => {
-        response.json().then((result) => console.log(result));
+        response.json().then((result) => saveTokens(result));
       });
     }
   };
