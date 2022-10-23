@@ -48,7 +48,12 @@ export default function SignIn() {
           }),
         }
       ).then((response) => {
-        response.json().then((result) => console.log(result));
+        response.json().then((result) => {
+          localStorage.setItem("access-token", result.access_token);
+          localStorage.setItem("refresh-token", result.refresh_token);
+          localStorage.setItem("expires_in", result.expires_in);
+          localStorage.setItem("username", result.user.user_metadata.name);
+        });
       });
     }
   };
