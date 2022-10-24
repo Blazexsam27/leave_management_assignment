@@ -6,6 +6,17 @@ export default function EditLeave() {
   const [start_date, setStartDate] = useState(new Date());
   const [end_date, setEndDate] = useState(new Date());
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch("https://dkgicggupnrxldwvkeft.supabase.co/rest/v1/leaves", {
+      method: "POST",
+      headers: {
+        apikey: process.env.REACT_APP_API_KEY,
+        Authorization: localStorage.getItem("access_token"),
+      },
+    });
+  };
+
   return (
     <div className="edit-leave-container">
       <div className="header">
@@ -14,7 +25,7 @@ export default function EditLeave() {
         </p>
       </div>
       <div className="leave-form">
-        <form className="edit-leave-form">
+        <form className="edit-leave-form" onSubmit={handleSubmit}>
           <p className="edit-leave-header">Edit Leave</p>
           <label htmlFor="start_date">Start date: </label>
           <DatePicker value={start_date} onChange={setStartDate} />

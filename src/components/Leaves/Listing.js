@@ -37,7 +37,7 @@ export default function Listing() {
             ? upcomingLeaves.map((item) => {
                 return (
                   <tr key={item.id}>
-                    <td>NAME</td>
+                    <td>{localStorage.getItem("username")}</td>
                     <td>{item.start_date}</td>
                     <td>{item.end_date}</td>
                     <td>{item.reason}</td>
@@ -62,7 +62,7 @@ export default function Listing() {
             ? pastLeaves.map((item) => {
                 return (
                   <tr key={item.id}>
-                    <td>NAME</td>
+                    <td>{localStorage.getItem("username")}</td>
                     <td>{item.start_date}</td>
                     <td>{item.end_date}</td>
                     <td>{item.reason}</td>
