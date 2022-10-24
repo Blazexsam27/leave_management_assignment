@@ -47,3 +47,71 @@
 .edit-leave-container .leave-form .edit-leave-form label{
     font-size: 1.2rem;
 }
+
+.edit-leave-container .leave-form .edit-leave-form .edit-leave-header{
+    font-size: 4rem;
+    text-align: center;
+    font-family: var(--ubuntu-font);
+}
+
+.edit-leave-container .leave-form .edit-leave-btn{
+    margin-top: 10px;
+    font-size: 2rem;
+}
+
+
+@media (max-width:768px){
+    html{
+        font-size: 100%;
+    }
+    .edit-leave-container .leave-form .edit-leave-form .edit-leave-header{
+        font-size: 2rem;
+    }
+    .edit-leave-container .header p{
+        font-size: 2.5rem;
+        font-family: var(--source-sans-font);
+    }
+    .edit-leave-container .leave-form .edit-leave-form label, input{
+        font-size: 1rem;
+    }
+    .edit-leave-container .leave-form .edit-leave-form{
+        width: 70%;
+        height: 45vh;
+    }
+    .edit-leave-container .leave-form .edit-leave-btn{
+        font-size: 1rem;
+    }
+
+}
+
+@media (max-width:500px){
+    html{
+        font-size: 100%;
+    }
+    .edit-leave-container .leave-form .edit-leave-form label, input{
+        font-size: 1rem;
+    }
+    .edit-leave-container{
+        flex-direction: column;
+        width: 100vw;
+    }
+    .edit-leave-container .leave-form{
+        width: 100vw;
+        background: #fff;
+    }
+    .edit-leave-container .leave-form .edit-leave-header{
+        display: none
+    }
+    .edit-leave-container .header{
+        padding-top: 100px;
+        width: 100%;
+    }
+    .edit-leave-container .leave-form .edit-leave-form{
+        width: 90%;
+        height: 35vh;
+    }
+    .edit-leave-container .leave-form .edit-leave-btn{
+        font-size: 1.5rem;
+    }
+
+}

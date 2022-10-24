@@ -15,12 +15,14 @@ export default function EditLeave() {
       </div>
       <div className="leave-form">
         <form className="edit-leave-form">
+          <p className="edit-leave-header">Edit Leave</p>
           <label htmlFor="start_date">Start date: </label>
           <DatePicker value={start_date} onChange={setStartDate} />
           <label htmlFor="end_date">End date: </label>
           <DatePicker value={end_date} onChange={setStartDate} />
           <label htmlFor="reason">Reason: </label>
           <textarea name="reason" id="reason" cols="30" rows="10"></textarea>
+          <button className="edit-leave-btn">Submit</button>
         </form>
       </div>
     </div>
