@@ -33,7 +33,7 @@
     height: 100vh;
     flex-direction: column;
 }
-.signin-container .auth-form-container p{
+.signin-container .auth-form-container .signin-header{
     font-size: 5rem;
     text-align: center;
     color: var(--subheader-color);
@@ -45,7 +45,7 @@
     flex-direction: column;
     justify-content: end;
     width: 50%;
-    height: 55vh;
+    height: 50vh;
     padding: 20px;
     background: #ffffff;
     border-radius: 7px;
@@ -74,4 +74,47 @@
 
 .signin-container .auth-form-container .signin-form .submit-button:hover{
     background-color: var(--ufo-green);   transition: 0.4s;
+}
+
+.signin-container .auth-form-container .create-account-btn{
+    text-decoration: none;
+    color: #0984e3;
+    font-size: 1.5rem;
+}
+
+@media (max-width:768px){
+    .signin-container .auth-form-container .signin-form{
+        width: 70%;
+        height: 40vh;
+    }
+    .signin-container .auth-form-container .create-account-btn{
+        font-size: 2rem;
+    }
+
+}
+
+@media (max-width:500px){
+    .signin-container{
+        flex-direction: column;
+        width: 100vw;
+    }
+    .signin-container .auth-form-container{
+        width: 100vw;
+        background: #fff;
+    }
+    .signin-container .auth-form-container .signin-header{
+        display: none
+    }
+    .signin-container .header{
+        padding-top: 100px;
+        width: 100%;
+    }
+    .signin-container .auth-form-container .signin-form{
+        width: 90%;
+        height: 35vh;
+    }
+    .signin-container .auth-form-container .create-account-btn{
+        font-size: 5rem;
+    }
+
 }

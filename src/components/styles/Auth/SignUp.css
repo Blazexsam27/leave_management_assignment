@@ -55,6 +55,7 @@
 .signup-container .auth-form-container .signup-form .signup-image{
     object-fit: contain;
     max-width: 65%;
+    align-self: center;
 }
 
 .signup-container .auth-form-container .signup-form input{
@@ -75,4 +76,49 @@
 
 .signup-container .auth-form-container .signup-form .submit-button:hover{
     background-color: var(--ufo-green);   transition: 0.4s;
+}
+
+.signup-container .auth-form-container .login-account-btn{
+    text-decoration: none;
+    color: #0984e3;
+    font-size: 1.5rem;
+}
+
+@media (max-width:768px){
+    .signup-container .auth-form-container .signup-form{
+        width: 70%;
+        height: 48vh;
+    }
+    .signup-container .auth-form-container .signup-form .signup-image{
+        max-width: 55%;
+    }   
+     .signup-container .auth-form-container .login-account-btn{
+        font-size: 2rem;
+    }
+}
+
+@media (max-width:500px){
+    .signup-container{
+        flex-direction: column;
+        width: 100vw;
+    }
+    .signup-container .auth-form-container{
+        width: 100vw;
+        background: #fff;
+    }
+    .signup-container .auth-form-container .signup-header{
+        display: none
+    }
+    .signup-container .header{
+        padding-top: 100px;
+        width: 100%;
+    }
+    .signup-container .auth-form-container .signup-form{
+        width: 90%;
+        height: 35vh;
+    }
+    .signup-container .auth-form-container .login-account-btn{
+        font-size: 5rem;
+    }
+
 }
