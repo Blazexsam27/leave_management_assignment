@@ -6,6 +6,39 @@
     text-align: center;
 }
 
+.listing-container .filters{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.listing-container .filters .filter-tabs{
+    border-radius: 5px;
+    padding: 2px 6px;
+    background: #b2bec3;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.listing-container .custom-filter{
+    display: flex;
+    flex-direction: column;
+    margin: 2px;
+    width: 30%;
+}
+
+.listing-container .custom-filter .apply{
+    border-radius: 5px;
+    padding: 2px 6px;
+    background: #b2bec3;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.listing-container .custom-filter{
+    font-size: 1.5rem;
+}
+
 .listing-container .upcoming-leaves-header, .past-leaves-header{
     font-size: 4rem;
     font-family: var(--source-sans-font);
@@ -61,16 +94,43 @@
     .listing-container{
         margin: 2rem 6rem;
     }
+    .listing-container .filters .filter-tabs{
+        font-size: 3rem;
+    }
+    
     .listing-container  table, td{
         font-size: 2rem;
     }
+    .listing-container .react-date-picker__inputGroup{
+        font-size: 3rem;
+    }
+    .listing-container .custom-filter{
+        width: 50%;
+    }
+    .listing-container .custom-filter{
+        font-size: 3rem;
+    }
+    
 }
 
 @media (max-width:500px){
     .listing-container{
         margin: 1rem 1rem;
     }
+    .listing-container .filters .filter-tabs{
+        font-size: 3rem;
+    }
+    
     .listing-container  table, td{
+        font-size: 4rem;
+    }
+    .listing-container .react-date-picker__inputGroup{
+        font-size: 4rem;
+    }
+    .listing-container .custom-filter{
+        width: 70%;
+    }
+    .listing-container .custom-filter{
         font-size: 4rem;
     }
 }

@@ -1,21 +1,77 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Leaves/Listing.css";
 import {
+  parseDate,
   deleteLeave,
-  getPastLeaves,
-  getUpcomingLeaves,
+  getLeavesInRange,
+  getMonthName,
+  getCurrentMonthLeaves,
+  getPastMonthLeaves,
+  getPast6MonthsLeaves,
+  getPast1YearLeaves,
 } from "../../services/leavesServices";
 import Navbar from "../Widgets/Navbar";
 import { Link } from "react-router-dom";
+import DatePicker from "react-date-picker";
 
 export default function Listing() {
+  const date = new Date();
+  const [start_date, setStartDate] = useState(new Date());
+  const [end_date, setEndDate] = useState(new Date());
   const [pastLeaves, setPastLeaves] = useState([]);
   const [upcomingLeaves, setUpcomingLeaves] = useState([]);
   const [isloading, setIsloading] = useState(true);
 
+  const handleFilter = async (filter) => {
+    setIsloading(true);
+    switch (filter) {
+      case "current":
+        setUpcomingLeaves((await getCurrentMonthLeaves()).upcomingLeaves);
+        setPastLeaves((await getCurrentMonthLeaves()).pastLeaves);
+        setIsloading(false);
+        break;
+      case "past":
+        setUpcomingLeaves([]);
+        setPastLeaves(await getPastMonthLeaves());
+        setIsloading(false);
+        break;
+      case "6months":
+        setUpcomingLeaves([]);
+        setPastLeaves(await getPast6MonthsLeaves());
+        setIsloading(false);
+        break;
+      case "1year":
+        setUpcomingLeaves([]);
+        setPastLeaves(await getPast1YearLeaves());
+        setIsloading(false);
+        break;
+      default:
+        getLeaves();
+        setIsloading(false);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const parsedStartDate = parseDate(start_date);
+    const parsedEndDate = parseDate(end_date);
+    setUpcomingLeaves(await getLeavesInRange(start_date, end_date));
+  };
+
   const getLeaves = async () => {
-    setPastLeaves(await getPastLeaves());
-    setUpcomingLeaves(await getUpcomingLeaves());
+    setIsloading(true);
+    setPastLeaves(
+      await getLeavesInRange(
+        `${date.getFullYear() - 5}-${date.getMonth()}-${date.getDate() + 1}`,
+        `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+      )
+    );
+    setUpcomingLeaves(
+      await getLeavesInRange(
+        `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate() + 1}`,
+        `${date.getFullYear() + 1}-${date.getMonth() + 1}-${date.getDate() + 1}`
+      )
+    );
     setIsloading(false);
   };
 
@@ -34,7 +90,34 @@ export default function Listing() {
   return (
     <>
       <Navbar />
+
       <div className="listing-container">
+        <div className="filters">
+          <div className="filter-tabs" onClick={() => handleFilter("all")}>
+            All
+          </div>
+          <div className="filter-tabs" onClick={() => handleFilter("current")}>
+            {getMonthName(date.getMonth())}
+          </div>
+          <div className="filter-tabs" onClick={() => handleFilter("past")}>
+            {getMonthName(date.getMonth() - 1)}
+          </div>
+          <div className="filter-tabs" onClick={() => handleFilter("6months")}>
+            Last 6 Months
+          </div>
+          <div className="filter-tabs" onClick={() => handleFilter("1year")}>
+            Last 1 Year
+          </div>
+        </div>
+        <form className="custom-filter" onSubmit={handleSubmit}>
+          <label htmlFor="start_date_filter">Start Date: </label>
+          <DatePicker value={start_date} onChange={setStartDate} />
+          <label htmlFor="end_date_filter">End Date: </label>
+          <DatePicker value={end_date} onChange={setEndDate} />
+          <button className="apply" type="submit">
+            apply
+          </button>
+        </form>
         <p className="upcoming-leaves-header">Upcoming Leaves</p>
         <table className="upcoming-leaves-table">
           <thead>

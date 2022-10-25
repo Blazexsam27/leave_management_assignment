@@ -1,15 +1,28 @@
-const date = new Date();
+const url =
+  "https://dkgicggupnrxldwvkeft.supabase.co/rest/v1/leaves?start_date=gt.";
 
-const getPastLeaves = async () => {
-  const start_date = `${date.getFullYear() - 1}-${
-    date.getMonth() + 1
-  }-${date.getDate()}`;
-  const end_date = `${date.getFullYear()}-${
-    date.getMonth() + 1
-  }-${date.getDate()}`;
+const getMonthName = (number) => {
+  const date = new Date();
+  date.setMonth(number);
+  return date.toLocaleString([], {
+    month: "long",
+  });
+};
+const getLastDayCurrentMonth = () => {
+  var date = new Date();
+  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  return lastDay.getDate();
+};
+const parseDate = (date) => {
+  const temp = date.toLocaleDateString().split("/");
+  const parsedDate = `${temp[2]}-${temp[1]}-${temp[0]}`;
+  return parsedDate;
+};
 
+// Function to retrieve leaves.
+const getCurrentMonthUpcomingLeaves = async (start_date, end_date) => {
   const data = await fetch(
-    `https://dkgicggupnrxldwvkeft.supabase.co/rest/v1/leaves?start_date=gt.${start_date}&end_date=lt.${end_date}&select=*`,
+    url + `${start_date}&end_date=lt.${end_date}&select=*`,
     {
       method: "GET",
       headers: {
@@ -22,16 +35,9 @@ const getPastLeaves = async () => {
   return await data.json();
 };
 
-const getUpcomingLeaves = async () => {
-  const start_date = `${date.getFullYear()}-${
-    date.getMonth() + 1
-  }-${date.getDate()}`;
-  const end_date = `${date.getFullYear() + 1}-${
-    date.getMonth() + 1
-  }-${date.getDate()}`;
-
+const getCurrentMonthPastLeaves = async (start_date, end_date) => {
   const data = await fetch(
-    `https://dkgicggupnrxldwvkeft.supabase.co/rest/v1/leaves?start_date=gt.${start_date}&end_date=lt.${end_date}&select=*`,
+    url + `${start_date}&end_date=lt.${end_date}&select=*`,
     {
       method: "GET",
       headers: {
@@ -44,6 +50,63 @@ const getUpcomingLeaves = async () => {
   return await data.json();
 };
 
+const getLeavesInRange = async (start_date, end_date) => {
+  const data = await fetch(
+    url + `${start_date}&end_date=lt.${end_date}&select=*`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: process.env.REACT_APP_API_KEY,
+        Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+      },
+    }
+  );
+  return await data.json();
+};
+
+// functions for filtering leaves
+const getPastMonthLeaves = async () => {
+  const date = new Date();
+  const leaves = await getLeavesInRange(
+    `${date.getFullYear()}-${date.getMonth() + 1}-${1}`,
+    `${date.getFullYear()}-${date.getMonth() + 1}-${getLastDayCurrentMonth()}`
+  );
+  return leaves;
+};
+
+const getCurrentMonthLeaves = async () => {
+  const date = new Date();
+  const upcomingLeaves = await getCurrentMonthUpcomingLeaves(
+    `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
+    `${date.getFullYear()}-${date.getMonth() + 1}-${getLastDayCurrentMonth()}`
+  );
+  const pastLeaves = await getCurrentMonthPastLeaves(
+    `${date.getFullYear()}-${date.getMonth() + 1}-${1}`,
+    `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+  );
+  return { upcomingLeaves, pastLeaves };
+};
+
+const getPast6MonthsLeaves = async () => {
+  const date = new Date();
+  const leaves = await getLeavesInRange(
+    `${date.getFullYear()}-${date.getMonth() - 5}-${date.getDate()}`,
+    `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+  );
+  return leaves;
+};
+
+const getPast1YearLeaves = async () => {
+  const date = new Date();
+  const leaves = await getLeavesInRange(
+    `${date.getFullYear() - 1}-${date.getMonth() + 1}-${date.getDate()}`,
+    `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+  );
+  return leaves;
+};
+
+// funtion to delete a leave using id.
 const deleteLeave = async (leave_id) => {
   await fetch(
     `https://dkgicggupnrxldwvkeft.supabase.co/rest/v1/leaves?id=eq.${leave_id}`,
@@ -58,4 +121,15 @@ const deleteLeave = async (leave_id) => {
   );
 };
 
-module.exports = { getPastLeaves, getUpcomingLeaves, deleteLeave };
+module.exports = {
+  parseDate,
+  getLeavesInRange,
+  deleteLeave,
+  getMonthName,
+  getCurrentMonthUpcomingLeaves,
+  getCurrentMonthPastLeaves,
+  getPastMonthLeaves,
+  getCurrentMonthLeaves,
+  getPast6MonthsLeaves,
+  getPast1YearLeaves,
+};
