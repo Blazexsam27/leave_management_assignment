@@ -44,3 +44,33 @@
 .listing-container .upcoming-leaves-table{
     margin-bottom: 2rem;
 }
+
+.listing-container .upcoming-leaves-table .edit-leave{
+    margin-right: 4rem;
+}
+.listing-container .upcoming-leaves-table .delete-leave{
+    color: #34495e;
+    cursor: pointer;
+}
+
+.listing-container .upcoming-leaves-table .delete-leave:active{
+    color: red;
+}
+
+@media (max-width:768px){
+    .listing-container{
+        margin: 2rem 6rem;
+    }
+    .listing-container  table, td{
+        font-size: 2rem;
+    }
+}
+
+@media (max-width:500px){
+    .listing-container{
+        margin: 1rem 1rem;
+    }
+    .listing-container  table, td{
+        font-size: 4rem;
+    }
+}
