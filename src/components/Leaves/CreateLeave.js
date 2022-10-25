@@ -25,9 +25,15 @@ export default function CreateLeave() {
         end_date: end_date,
         reason: reason,
       }),
-    }).then((response) => {
-      response.json().then((result) => console.log(result));
-    });
+    })
+      .then((response) => {
+        navigate("/", { state: { message: "Leave Created Successfully" } });
+      })
+      .catch((err) => {
+        navigate("/", {
+          state: { message: "Leave Creation Failed", err: err },
+        });
+      });
   };
 
   return (

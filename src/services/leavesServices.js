@@ -44,4 +44,18 @@ const getUpcomingLeaves = async () => {
   return await data.json();
 };
 
-module.exports = { getPastLeaves, getUpcomingLeaves };
+const deleteLeave = async (leave_id) => {
+  await fetch(
+    `https://dkgicggupnrxldwvkeft.supabase.co/rest/v1/leaves?id=eq.${leave_id}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: process.env.REACT_APP_API_KEY,
+        Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+      },
+    }
+  );
+};
+
+module.exports = { getPastLeaves, getUpcomingLeaves, deleteLeave };
