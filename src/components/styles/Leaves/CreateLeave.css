@@ -58,36 +58,37 @@
     font-size: 2rem;
 }
 
+.react-date-picker__inputGroup{
+    font-size: 2rem;
+}
+
 @media (max-width:768px){
-    html{
-        font-size: 100%;
-    }
     .create-leave-container .leave-form .create-leave-form .create-leave-header{
-        font-size: 2rem;
+        font-size: 4rem;
     }
     .create-leave-container .header p{
-        font-size: 2.5rem;
+        font-size: 6rem;
         font-family: var(--source-sans-font);
     }
     .create-leave-container .leave-form .create-leave-form label, input{
-        font-size: 1rem;
+        font-size: 2rem;
     }
     .create-leave-container .leave-form .create-leave-form{
         width: 70%;
         height: 45vh;
     }
     .create-leave-container .leave-form .create-leave-btn{
-        font-size: 1rem;
+        font-size: 2.5rem;
+    }
+    .react-date-picker__inputGroup{
+        font-size: 3rem;
     }
 
 }
 
 @media (max-width:500px){
-    html{
-        font-size: 100%;
-    }
     .create-leave-container .leave-form .create-leave-form label, input{
-        font-size: 1rem;
+        font-size: 4rem;
     }
     .create-leave-container{
         flex-direction: column;
@@ -109,7 +110,10 @@
         height: 35vh;
     }
     .create-leave-container .leave-form .create-leave-btn{
-        font-size: 1.5rem;
+        font-size: 4rem;
+    }
+    .react-date-picker__inputGroup{
+        font-size: 4rem;
     }
 
 }
