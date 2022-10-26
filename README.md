@@ -1,3 +1,10 @@
+**LEAVE MANAGEMENT WEBAPP**
+#### INTRODUCTION
+##### A web application built using to React.js library for the managing leaves.
+#### FEATURES
+ - ##### User Authentication
+ - ##### CRUD operations for Leaves
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
