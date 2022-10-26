@@ -68,6 +68,9 @@ export default function SignIn() {
         <p>
           LEAVE <span>MANAGEMENT</span>
         </p>
+        <div className="menu">
+          <Link to={"/"}>Home</Link>
+        </div>
       </div>
       <div className="auth-form-container">
         <p className="signin-header">Sign In</p>

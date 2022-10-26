@@ -130,7 +130,7 @@ export default function Listing() {
             </tr>
           </thead>
           <tbody>
-            {!isloading
+            {!isloading && upcomingLeaves
               ? upcomingLeaves.map((item) => {
                   return (
                     <tr key={item.id}>
@@ -142,7 +142,12 @@ export default function Listing() {
                         <Link
                           className="edit-leave"
                           to={"/editleave"}
-                          state={{ id: item.id }}
+                          state={{
+                            id: item.id,
+                            start_date: item.start_date,
+                            end_date: item.end_date,
+                            reason: item.reason,
+                          }}
                         >
                           <i className="zmdi zmdi-edit"></i>
                         </Link>
@@ -170,7 +175,7 @@ export default function Listing() {
             </tr>
           </thead>
           <tbody>
-            {!isloading
+            {!isloading && pastLeaves
               ? pastLeaves.map((item) => {
                   return (
                     <tr key={item.id}>

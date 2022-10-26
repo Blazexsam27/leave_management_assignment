@@ -1,0 +1,18 @@
+.calendar-container{
+    display: flex;
+    height: 90vh;
+    flex-direction: column;
+    justify-content:  center;
+    align-items: center;
+    width: 100vw;
+    margin: 7px;
+}
+
+.highlight{
+    color: rgb(0, 255, 51);
+}
+
+.calendar-container .react-calendar{
+    height: 320px;
+    font-size: 1.5rem;
+}
