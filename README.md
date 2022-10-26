@@ -1,5 +1,5 @@
-**LEAVE MANAGEMENT WEBAPP**
-#### INTRODUCTION
+## **LEAVE MANAGEMENT WEBAPP**
+##### INTRODUCTION
 ##### A web application built using to React.js library for the managing leaves.
 #### FEATURES
  - ##### User Authentication
