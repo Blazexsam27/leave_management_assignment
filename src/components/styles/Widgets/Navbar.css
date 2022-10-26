@@ -20,3 +20,15 @@
     color: var(--asphalt-color);
     font-family: var(--ubuntu-font);
 }
+
+@media (max-width: 768px){
+    .nav-container ul li{
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 500px){
+    .nav-container ul li{
+        font-size: 5rem;
+    }
+}
