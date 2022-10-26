@@ -9,6 +9,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+.create-leave-container .header .menu a{
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: var(--header-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #fff;
+    margin: 2px;
 }
 
 .create-leave-container .header p{
@@ -98,12 +110,16 @@
         width: 100vw;
         background: #fff;
     }
-    .create-leave-container .leave-form .create-leave-header{
-        display: none
-    }
+
     .create-leave-container .header{
         padding-top: 100px;
         width: 100%;
+    }
+    .create-leave-container .header p{
+        font-size: 9rem;
+    }
+    .create-leave-container .header .menu a{
+        font-size: 2.5rem;
     }
     .create-leave-container .leave-form .create-leave-form{
         width: 90%;

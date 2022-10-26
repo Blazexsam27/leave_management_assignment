@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Leaves/EditLeave.css";
 import DatePicker from "react-date-picker";
+import { Link } from "react-router-dom";
 
 export default function EditLeave() {
   const [start_date, setStartDate] = useState(new Date());
@@ -23,6 +24,11 @@ export default function EditLeave() {
         <p>
           LEAVE <span>MANAGEMENT</span>
         </p>
+        <div className="menu">
+          <Link to={"/"}>Home</Link>
+          <Link to={"/listing"}>Listing</Link>
+          <Link to={"/createleave"}>Create</Link>
+        </div>
       </div>
       <div className="leave-form">
         <form className="edit-leave-form" onSubmit={handleSubmit}>

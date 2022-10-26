@@ -9,6 +9,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+.edit-leave-container .header .menu a{
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: var(--header-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #fff;
+    margin: 2px;
 }
 
 .edit-leave-container .header p{
@@ -106,6 +118,9 @@
         padding-top: 100px;
         width: 100%;
     }
+    .edit-leave-container .header .menu a{
+        font-size: 2.5rem;
+    }
     .edit-leave-container .leave-form .edit-leave-form{
         width: 90%;
         height: 35vh;
@@ -115,6 +130,12 @@
     }
     .react-date-picker__inputGroup{
         font-size: 4rem;
+    }
+    .edit-leave-container .header p{
+        font-size: 9rem;
+    }
+    .edit-leave-container .header .menu a{
+        font-size: 2.5rem;
     }
 
 }
