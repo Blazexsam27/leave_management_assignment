@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/Leaves/EditLeave.css";
 import DatePicker from "react-date-picker";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function EditLeave() {
   const location = useLocation();
@@ -11,6 +12,10 @@ export default function EditLeave() {
   const [reason, setReason] = useState("");
 
   useEffect(() => {
+    if (!Cookies.get("access_token"))
+      navigate("/", {
+        state: { message: "Token Expired Please Sign In Again." },
+      });
     setStartDate(new Date(location.state.start_date));
     setEndDate(new Date(location.state.end_date));
     setReason(location.state.reason);
@@ -25,7 +30,7 @@ export default function EditLeave() {
         headers: {
           "Content-Type": "application/json",
           apikey: process.env.REACT_APP_API_KEY,
-          Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+          Authorization: `Bearer ${Cookies.get("access_token")}`,
         },
         body: JSON.stringify({
           start_date: start_date.toISOString().split("T")[0],

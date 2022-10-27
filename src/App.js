@@ -7,6 +7,7 @@ import Listing from "./components/Leaves/Listing";
 import CreateLeave from "./components/Leaves/CreateLeave";
 import EditLeave from "./components/Leaves/EditLeave";
 import CalendarView from "./components/Leaves/CalendarView";
+import SignOut from "./components/Auth/SignOut";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/createleave" element={<CreateLeave />}></Route>
         <Route path="/editleave" element={<EditLeave />}></Route>
         <Route path="/calendar" element={<CalendarView />}></Route>
+        <Route path="/signout" element={<SignOut />}></Route>
       </Routes>
     </BrowserRouter>
   );

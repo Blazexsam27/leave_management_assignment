@@ -1,3 +1,5 @@
+const Cookies = require("js-cookie");
+
 const url =
   "https://dkgicggupnrxldwvkeft.supabase.co/rest/v1/leaves?start_date=gt.";
 
@@ -28,7 +30,7 @@ const getCurrentMonthUpcomingLeaves = async (start_date, end_date) => {
       headers: {
         "Content-Type": "application/json",
         apikey: process.env.REACT_APP_API_KEY,
-        Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        Authorization: `Bearer ${Cookies.get("access_token")}`,
       },
     }
   );
@@ -43,7 +45,7 @@ const getCurrentMonthPastLeaves = async (start_date, end_date) => {
       headers: {
         "Content-Type": "application/json",
         apikey: process.env.REACT_APP_API_KEY,
-        Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        Authorization: `Bearer ${Cookies.get("access_token")}`,
       },
     }
   );
@@ -58,7 +60,7 @@ const getLeavesInRange = async (start_date, end_date) => {
       headers: {
         "Content-Type": "application/json",
         apikey: process.env.REACT_APP_API_KEY,
-        Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        Authorization: `Bearer ${Cookies.get("access_token")}`,
       },
     }
   );
@@ -115,7 +117,7 @@ const deleteLeave = async (leave_id) => {
       headers: {
         "Content-Type": "application/json",
         apikey: process.env.REACT_APP_API_KEY,
-        Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        Authorization: `Bearer ${Cookies.get("access_token")}`,
       },
     }
   );

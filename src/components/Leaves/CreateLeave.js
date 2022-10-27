@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Leaves/CreateLeave.css";
 import DatePicker from "react-date-picker";
+import Cookies from "js-cookie";
 import { useNavigate, Link } from "react-router-dom";
 
 export default function CreateLeave() {
@@ -18,7 +19,7 @@ export default function CreateLeave() {
       headers: {
         "Content-Type": "application/json",
         apikey: process.env.REACT_APP_API_KEY,
-        Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        Authorization: `Bearer ${Cookies.get("access_token")}`,
       },
       body: JSON.stringify({
         start_date: start_date,
@@ -35,6 +36,13 @@ export default function CreateLeave() {
         });
       });
   };
+
+  useEffect(() => {
+    if (!Cookies.get("access_token"))
+      navigate("/", {
+        state: { message: "Token Expired Please Sign In Again." },
+      });
+  }, []);
 
   return (
     <div className="create-leave-container">

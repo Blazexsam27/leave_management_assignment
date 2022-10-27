@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Leaves/Listing.css";
+import Cookies from "js-cookie";
 import {
-  parseDate,
   deleteLeave,
   getLeavesInRange,
   getMonthName,
@@ -11,11 +11,12 @@ import {
   getPast1YearLeaves,
 } from "../../services/leavesServices";
 import Navbar from "../Widgets/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DatePicker from "react-date-picker";
 
 export default function Listing() {
   const date = new Date();
+  const navigate = useNavigate();
   const [start_date, setStartDate] = useState(new Date());
   const [end_date, setEndDate] = useState(new Date());
   const [pastLeaves, setPastLeaves] = useState([]);
@@ -53,9 +54,20 @@ export default function Listing() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const parsedStartDate = parseDate(start_date);
-    const parsedEndDate = parseDate(end_date);
-    setUpcomingLeaves(await getLeavesInRange(start_date, end_date));
+    const date = new Date();
+    const leaves = await getLeavesInRange(
+      `${start_date.getFullYear()}-${start_date.getMonth()}-${start_date.getDate()}`,
+      `${end_date.getFullYear()}-${end_date.getMonth()}-${end_date.getDate()}`
+    );
+    const pastLeavesTemp = [];
+    const upcomingLeavesTemp = [];
+    leaves.map((item) => {
+      let time = new Date(item.start_date).getTime();
+      if (date.getTime() < time) upcomingLeavesTemp.push(item);
+      else pastLeavesTemp.push(item);
+    });
+    setPastLeaves(pastLeavesTemp);
+    setUpcomingLeaves(upcomingLeavesTemp);
   };
 
   const getLeaves = async () => {
@@ -84,6 +96,10 @@ export default function Listing() {
   };
 
   useEffect(() => {
+    if (!Cookies.get("access_token"))
+      navigate("/", {
+        state: { message: "Token Expired Please Sign In Again." },
+      });
     getLeaves();
   }, []);
 
@@ -134,7 +150,7 @@ export default function Listing() {
               ? upcomingLeaves.map((item) => {
                   return (
                     <tr key={item.id}>
-                      <td>{localStorage.getItem("username")}</td>
+                      <td>{Cookies.get("username")}</td>
                       <td>{item.start_date}</td>
                       <td>{item.end_date}</td>
                       <td>{item.reason ? item.reason : "NA"}</td>
@@ -179,7 +195,7 @@ export default function Listing() {
               ? pastLeaves.map((item) => {
                   return (
                     <tr key={item.id}>
-                      <td>{localStorage.getItem("username")}</td>
+                      <td>{Cookies.get("username")}</td>
                       <td>{item.start_date}</td>
                       <td>{item.end_date}</td>
                       <td>{item.reason ? item.reason : "NA"}</td>
