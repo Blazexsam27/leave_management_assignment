@@ -54,6 +54,7 @@
     padding: 20px;
     background: #ffffff;
     border-radius: 7px;
+    
 }
 
 .edit-leave-container .leave-form .edit-leave-form label{
@@ -69,6 +70,12 @@
 .edit-leave-container .leave-form .edit-leave-btn{
     margin-top: 10px;
     font-size: 2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--asphalt-color);
+    color: #fff;
+    padding: 4px;
+    cursor: pointer;
 }
 .react-date-picker__inputGroup{
     font-size: 2rem;
