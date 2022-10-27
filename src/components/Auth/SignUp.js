@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Auth/SignUp.css";
 import signup from "../../assets/images/sign_up.png";
 import { saveTokens } from "../../services/authServices";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -63,6 +65,11 @@ export default function SignUp() {
       });
     }
   };
+
+  useEffect(() => {
+    if (Cookies.get("access_token"))
+      navigate("/", { state: { messsage: "Account Creation Successful" } });
+  }, []);
 
   return (
     <div className="signup-container">

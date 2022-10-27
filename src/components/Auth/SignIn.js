@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Auth/SignIn.css";
 import signin from "../../assets/images/sign_in.png";
-import { saveTokens } from "../../services/authServices";
+import { setCookie } from "../../services/authServices";
 import { useNavigate, Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -42,8 +43,7 @@ export default function SignIn() {
           method: "POST",
           headers: {
             "Content-type": "application/json",
-            apikey:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRrZ2ljZ2d1cG5yeGxkd3ZrZWZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjYwMDI4ODMsImV4cCI6MTk4MTU3ODg4M30.BLLinQ9VEK8_T-JE22WOidlJs_0TFhOb1n3zkSVc7eg",
+            apikey: process.env.REACT_APP_API_KEY,
           },
           body: JSON.stringify({
             email: email,
@@ -52,15 +52,15 @@ export default function SignIn() {
         }
       ).then((response) => {
         response.json().then((result) => {
-          saveTokens(result);
+          setCookie(result);
         });
       });
     }
   };
 
   useEffect(() => {
-    // if (localStorage.getItem("access-token")) navigate("/");
-  }, [localStorage.getItem("access-token")]);
+    if (Cookies.get("access_token")) navigate("/");
+  }, []);
 
   return (
     <div className="signin-container">

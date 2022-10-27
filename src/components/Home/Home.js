@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../styles/Home/Home.css";
+import Cookies from "js-cookie";
 
 export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const location = useLocation();
   useEffect(() => {
-    const access_token = localStorage.getItem("access-token");
+    const access_token = Cookies.get("access_token");
     if (access_token) setLoggedIn(true);
     else setLoggedIn(false);
   }, []);

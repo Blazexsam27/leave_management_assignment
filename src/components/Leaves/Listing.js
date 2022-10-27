@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Leaves/Listing.css";
+import Cookies from "js-cookie";
 import {
   parseDate,
   deleteLeave,
@@ -134,7 +135,7 @@ export default function Listing() {
               ? upcomingLeaves.map((item) => {
                   return (
                     <tr key={item.id}>
-                      <td>{localStorage.getItem("username")}</td>
+                      <td>{Cookies.get("username")}</td>
                       <td>{item.start_date}</td>
                       <td>{item.end_date}</td>
                       <td>{item.reason ? item.reason : "NA"}</td>
@@ -179,7 +180,7 @@ export default function Listing() {
               ? pastLeaves.map((item) => {
                   return (
                     <tr key={item.id}>
-                      <td>{localStorage.getItem("username")}</td>
+                      <td>{Cookies.get("username")}</td>
                       <td>{item.start_date}</td>
                       <td>{item.end_date}</td>
                       <td>{item.reason ? item.reason : "NA"}</td>
