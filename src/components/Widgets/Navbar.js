@@ -9,11 +9,8 @@ export default function Navbar() {
         <Link to={"/"}>
           <li>Home</li>
         </Link>
-        <Link to={"/"}>
-          <li>Leaves</li>
-        </Link>
-        <Link to={"/"}>
-          <li>About</li>
+        <Link to={"/createleave"}>
+          <li>CreateLeave</li>
         </Link>
       </ul>
     </nav>

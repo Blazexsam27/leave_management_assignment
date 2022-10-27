@@ -40,6 +40,12 @@ export default function Home() {
           <Link to={"/createleave"}>
             <button>Create Leave</button>
           </Link>
+          <Link to={"/calendar"}>
+            <button>Calendar</button>
+          </Link>
+          <Link to={"/signout"}>
+            <button>Logout</button>
+          </Link>
         </div>
       ) : (
         <div className="menu-btns">

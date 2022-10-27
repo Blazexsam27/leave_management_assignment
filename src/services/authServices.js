@@ -1,12 +1,12 @@
 const Cookies = require("js-cookie");
 
 const setCookie = (data) => {
-  const date = new Date();
+  const oneHr = new Date(new Date().getTime() + data.expires_in * 1000);
   Cookies.set("access_token", data.access_token, {
-    expires: date.getTime() + data.expires_in * 1000,
+    expires: oneHr,
   });
   Cookies.set("username", data.user.user_metadata.name, {
-    expires: date.getTime() + data.expires_in * 1000,
+    expires: oneHr,
   });
   Cookies.set("refresh_token", data.refresh_token);
 };

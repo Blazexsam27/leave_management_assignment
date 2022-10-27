@@ -60,6 +60,7 @@ export default function EditLeave() {
         <div className="menu">
           <Link to={"/"}>Home</Link>
           <Link to={"/listing"}>Listing</Link>
+          <Link to={"/calendar"}>Calendar</Link>
           <Link to={"/createleave"}>Create</Link>
         </div>
       </div>
