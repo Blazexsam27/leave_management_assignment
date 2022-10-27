@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import Navbar from "../Widgets/Navbar";
 import { getLeavesInRange } from "../../services/leavesServices";
+import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import "../styles/Leaves/CalendarView.css";
 import moment from "moment";
@@ -9,6 +10,7 @@ import moment from "moment";
 export default function CalendarView() {
   const [date, setDate] = useState();
   const [leaves, setLeaves] = useState([]);
+  const navigate = useNavigate();
 
   const getDatesInRange = (start, end) => {
     const date = new Date(start.getTime());
