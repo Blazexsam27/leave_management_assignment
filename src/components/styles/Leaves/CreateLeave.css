@@ -68,6 +68,12 @@
 .create-leave-container .leave-form .create-leave-btn{
     margin-top: 10px;
     font-size: 2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--asphalt-color);
+    color: #fff;
+    padding: 4px;
+    cursor: pointer;
 }
 
 .react-date-picker__inputGroup{

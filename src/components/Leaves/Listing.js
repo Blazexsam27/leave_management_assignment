@@ -11,6 +11,7 @@ import {
   getPast1YearLeaves,
 } from "../../services/leavesServices";
 import Navbar from "../Widgets/Navbar";
+import Loading from "../Widgets/Loading";
 import { Link, useNavigate } from "react-router-dom";
 import DatePicker from "react-date-picker";
 
@@ -146,38 +147,40 @@ export default function Listing() {
             </tr>
           </thead>
           <tbody>
-            {!isloading && upcomingLeaves
-              ? upcomingLeaves.map((item) => {
-                  return (
-                    <tr key={item.id}>
-                      <td>{Cookies.get("username")}</td>
-                      <td>{item.start_date}</td>
-                      <td>{item.end_date}</td>
-                      <td>{item.reason ? item.reason : "NA"}</td>
-                      <td>
-                        <Link
-                          className="edit-leave"
-                          to={"/editleave"}
-                          state={{
-                            id: item.id,
-                            start_date: item.start_date,
-                            end_date: item.end_date,
-                            reason: item.reason,
-                          }}
-                        >
-                          <i className="zmdi zmdi-edit"></i>
-                        </Link>
-                        <span
-                          className="delete-leave"
-                          onClick={() => handleDelete(item.id)}
-                        >
-                          <i className="zmdi zmdi-delete"></i>
-                        </span>
-                      </td>
-                    </tr>
-                  );
-                })
-              : "NULL"}
+            {!isloading && upcomingLeaves ? (
+              upcomingLeaves.map((item) => {
+                return (
+                  <tr key={item.id}>
+                    <td>{Cookies.get("username")}</td>
+                    <td>{item.start_date}</td>
+                    <td>{item.end_date}</td>
+                    <td>{item.reason ? item.reason : "NA"}</td>
+                    <td>
+                      <Link
+                        className="edit-leave"
+                        to={"/editleave"}
+                        state={{
+                          id: item.id,
+                          start_date: item.start_date,
+                          end_date: item.end_date,
+                          reason: item.reason,
+                        }}
+                      >
+                        <i className="zmdi zmdi-edit"></i>
+                      </Link>
+                      <span
+                        className="delete-leave"
+                        onClick={() => handleDelete(item.id)}
+                      >
+                        <i className="zmdi zmdi-delete"></i>
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })
+            ) : (
+              <Loading />
+            )}
           </tbody>
         </table>
         <p className="past-leaves-header">Past Leaves</p>
@@ -191,18 +194,20 @@ export default function Listing() {
             </tr>
           </thead>
           <tbody>
-            {!isloading && pastLeaves
-              ? pastLeaves.map((item) => {
-                  return (
-                    <tr key={item.id}>
-                      <td>{Cookies.get("username")}</td>
-                      <td>{item.start_date}</td>
-                      <td>{item.end_date}</td>
-                      <td>{item.reason ? item.reason : "NA"}</td>
-                    </tr>
-                  );
-                })
-              : "NULL"}
+            {!isloading && pastLeaves ? (
+              pastLeaves.map((item) => {
+                return (
+                  <tr key={item.id}>
+                    <td>{Cookies.get("username")}</td>
+                    <td>{item.start_date}</td>
+                    <td>{item.end_date}</td>
+                    <td>{item.reason ? item.reason : "NA"}</td>
+                  </tr>
+                );
+              })
+            ) : (
+              <Loading />
+            )}
           </tbody>
         </table>
       </div>

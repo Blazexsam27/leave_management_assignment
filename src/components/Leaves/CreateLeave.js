@@ -53,6 +53,7 @@ export default function CreateLeave() {
         <div className="menu">
           <Link to={"/"}>Home</Link>
           <Link to={"/listing"}>Listing</Link>
+          <Link to={"/calendar"}>Calendar</Link>
         </div>
       </div>
       <div className="leave-form">

@@ -1,0 +1,13 @@
+.alert-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 75%;
+    background: var(--electric-blue);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.alert-container{
+    font-size: 15px;
+}
