@@ -12,6 +12,10 @@ export default function EditLeave() {
   const [reason, setReason] = useState("");
 
   useEffect(() => {
+    if (!Cookies.get("access_token"))
+      navigate("/", {
+        state: { message: "Token Expired Please Sign In Again." },
+      });
     setStartDate(new Date(location.state.start_date));
     setEndDate(new Date(location.state.end_date));
     setReason(location.state.reason);

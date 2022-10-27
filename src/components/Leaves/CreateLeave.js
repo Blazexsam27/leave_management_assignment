@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Leaves/CreateLeave.css";
 import DatePicker from "react-date-picker";
 import Cookies from "js-cookie";
@@ -36,6 +36,13 @@ export default function CreateLeave() {
         });
       });
   };
+
+  useEffect(() => {
+    if (!Cookies.get("access_token"))
+      navigate("/", {
+        state: { message: "Token Expired Please Sign In Again." },
+      });
+  }, []);
 
   return (
     <div className="create-leave-container">

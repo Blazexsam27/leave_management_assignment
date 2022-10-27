@@ -61,14 +61,17 @@ export default function SignUp() {
           },
         }),
       }).then((response) => {
-        response.json().then((result) => saveTokens(result));
+        response.json().then((result) => {
+          saveTokens(result);
+          navigate("/", { state: { message: "Account Created Successfully" } });
+        });
       });
     }
   };
 
   useEffect(() => {
     if (Cookies.get("access_token"))
-      navigate("/", { state: { messsage: "Account Creation Successful" } });
+      navigate("/", { state: { messsage: "Already Registered" } });
   }, []);
 
   return (

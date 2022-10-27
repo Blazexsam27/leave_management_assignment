@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../styles/Leaves/Listing.css";
 import Cookies from "js-cookie";
 import {
-  parseDate,
   deleteLeave,
   getLeavesInRange,
   getMonthName,
@@ -12,11 +11,12 @@ import {
   getPast1YearLeaves,
 } from "../../services/leavesServices";
 import Navbar from "../Widgets/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DatePicker from "react-date-picker";
 
 export default function Listing() {
   const date = new Date();
+  const navigate = useNavigate();
   const [start_date, setStartDate] = useState(new Date());
   const [end_date, setEndDate] = useState(new Date());
   const [pastLeaves, setPastLeaves] = useState([]);
@@ -96,6 +96,10 @@ export default function Listing() {
   };
 
   useEffect(() => {
+    if (!Cookies.get("access_token"))
+      navigate("/", {
+        state: { message: "Token Expired Please Sign In Again." },
+      });
     getLeaves();
   }, []);
 

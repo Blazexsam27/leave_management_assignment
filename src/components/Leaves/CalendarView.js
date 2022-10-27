@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import Navbar from "../Widgets/Navbar";
 import { getLeavesInRange } from "../../services/leavesServices";
+import { useNavigate } from "react-router-dom";
 import "../styles/Leaves/CalendarView.css";
 import moment from "moment";
 
@@ -36,6 +37,10 @@ export default function CalendarView() {
     await setLeaves([...temp]);
   };
   useEffect(() => {
+    if (!Cookies.get("access_token"))
+      navigate("/", {
+        state: { message: "Token Expired Please Sign In Again." },
+      });
     getLeaves();
   }, []);
 

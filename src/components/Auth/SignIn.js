@@ -53,13 +53,15 @@ export default function SignIn() {
       ).then((response) => {
         response.json().then((result) => {
           setCookie(result);
+          navigate("/", { state: { message: "Sign in successful" } });
         });
       });
     }
   };
 
   useEffect(() => {
-    if (Cookies.get("access_token")) navigate("/");
+    if (Cookies.get("access_token"))
+      navigate("/", { state: { message: "Already Signed In" } });
   }, []);
 
   return (
