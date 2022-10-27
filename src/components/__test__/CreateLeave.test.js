@@ -1,0 +1,24 @@
+import { findAllByRole, render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import CreateLeave from "../Leaves/CreateLeave";
+
+describe("Test Create Leave Component", () => {
+  test("Must have 5 buttons", async () => {
+    render(
+      <BrowserRouter>
+        <CreateLeave />
+      </BrowserRouter>
+    );
+    const buttonList = await screen.findAllByRole("button");
+    expect(buttonList).toHaveLength(5);
+  });
+  test("Must have 1 input fields", async () => {
+    render(
+      <BrowserRouter>
+        <CreateLeave />
+      </BrowserRouter>
+    );
+    const inputList = await screen.findAllByRole("input");
+    expect(inputList).toHaveLength(1);
+  });
+});

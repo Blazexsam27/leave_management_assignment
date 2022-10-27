@@ -80,6 +80,7 @@ export default function SignIn() {
           <img className="signin-image" src={signin} alt="Sign In Image" />
           <label htmlFor="email">Email: </label>
           <input
+            role="input"
             type="text"
             id="email"
             name="email"
@@ -91,6 +92,7 @@ export default function SignIn() {
           <span style={{ color: "red" }}>{errors["email"]}</span>
           <label htmlFor="password">Password: </label>
           <input
+            role="input"
             type="password"
             id="password"
             name="password"

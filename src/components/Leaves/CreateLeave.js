@@ -65,6 +65,7 @@ export default function CreateLeave() {
           <DatePicker value={end_date} onChange={setEndDate} />
           <label htmlFor="reason">(Optional) Reason: </label>
           <textarea
+            role="input"
             name="reason"
             id="reason"
             cols="30"
@@ -72,7 +73,7 @@ export default function CreateLeave() {
             value={reason}
             onChange={(e) => setReason(e.target.value)}
           ></textarea>
-          <button className="create-leave-btn" type="submit">
+          <button className="create-leave-btn" type="submit" role="button">
             Submit
           </button>
         </form>
