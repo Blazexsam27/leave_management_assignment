@@ -54,9 +54,20 @@ export default function Listing() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const parsedStartDate = parseDate(start_date);
-    const parsedEndDate = parseDate(end_date);
-    setUpcomingLeaves(await getLeavesInRange(start_date, end_date));
+    const date = new Date();
+    const leaves = await getLeavesInRange(
+      `${start_date.getFullYear()}-${start_date.getMonth()}-${start_date.getDate()}`,
+      `${end_date.getFullYear()}-${end_date.getMonth()}-${end_date.getDate()}`
+    );
+    const pastLeavesTemp = [];
+    const upcomingLeavesTemp = [];
+    leaves.map((item) => {
+      let time = new Date(item.start_date).getTime();
+      if (date.getTime() < time) upcomingLeavesTemp.push(item);
+      else pastLeavesTemp.push(item);
+    });
+    setPastLeaves(pastLeavesTemp);
+    setUpcomingLeaves(upcomingLeavesTemp);
   };
 
   const getLeaves = async () => {
