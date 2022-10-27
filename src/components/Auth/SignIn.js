@@ -100,10 +100,10 @@ export default function SignIn() {
             required
           />
           <span style={{ color: "red" }}>{errors["password"]}</span>
-          <button className="submit-button" type="submit">
+          <button className="submit-button" type="submit" role="button">
             Sign In
           </button>
-          <Link to={"/signup"} className="create-account-btn">
+          <Link to={"/signup"} className="create-account-btn" role="button">
             Create Account
           </Link>
         </form>
