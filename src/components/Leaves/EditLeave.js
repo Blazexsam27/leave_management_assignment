@@ -16,9 +16,11 @@ export default function EditLeave() {
       navigate("/", {
         state: { message: "Token Expired Please Sign In Again." },
       });
-    setStartDate(new Date(location.state.start_date));
-    setEndDate(new Date(location.state.end_date));
-    setReason(location.state.reason);
+    else {
+      setStartDate(new Date(location.state.start_date));
+      setEndDate(new Date(location.state.end_date));
+      setReason(location.state.reason);
+    }
   }, []);
 
   const handleSubmit = async (e) => {
@@ -73,6 +75,7 @@ export default function EditLeave() {
           <DatePicker value={end_date} onChange={setEndDate} />
           <label htmlFor="reason">Reason: </label>
           <textarea
+            role="input"
             name="reason"
             id="reason"
             cols="30"
@@ -80,7 +83,7 @@ export default function EditLeave() {
             value={reason}
             onChange={(e) => setReason(e.target.value)}
           ></textarea>
-          <button className="edit-leave-btn" type="submit">
+          <button className="edit-leave-btn" type="submit" role="button">
             Submit
           </button>
         </form>

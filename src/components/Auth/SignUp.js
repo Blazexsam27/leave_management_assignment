@@ -87,6 +87,7 @@ export default function SignUp() {
           <img className="signup-image" src={signup} alt="Sign Up Image" />
           <label htmlFor="name">Name: </label>
           <input
+            role="input"
             type="text"
             id="name"
             name="name"
@@ -97,6 +98,7 @@ export default function SignUp() {
           />
           <label htmlFor="email">Email: </label>
           <input
+            role="input"
             type="text"
             id="email"
             name="email"
@@ -108,6 +110,7 @@ export default function SignUp() {
           <span style={{ color: "red" }}>{errors["email"]}</span>
           <label htmlFor="password">Password: </label>
           <input
+            role="input"
             type="password"
             id="password"
             name="password"
@@ -117,8 +120,10 @@ export default function SignUp() {
             required
           />
           <span style={{ color: "red" }}>{errors["password"]}</span>
-          <button className="submit-button">Sign Up</button>{" "}
-          <Link to={"/signin"} className="login-account-btn">
+          <button className="submit-button" role="button">
+            Sign Up
+          </button>
+          <Link to={"/signin"} className="login-account-btn" role="button">
             Sign in
           </Link>
         </form>
