@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/leave_management_assignment/static/css/main.d8d5ccf3.css",
+    "main.js": "/leave_management_assignment/static/js/main.1a691699.js",
+    "static/js/787.355f7509.chunk.js": "/leave_management_assignment/static/js/787.355f7509.chunk.js",
+    "static/media/sign_in.png": "/leave_management_assignment/static/media/sign_in.532766e212045fbc388b.png",
+    "static/media/sign_up.png": "/leave_management_assignment/static/media/sign_up.484ddc3fb9c0bcf04a17.png",
+    "index.html": "/leave_management_assignment/index.html",
+    "main.d8d5ccf3.css.map": "/leave_management_assignment/static/css/main.d8d5ccf3.css.map",
+    "main.1a691699.js.map": "/leave_management_assignment/static/js/main.1a691699.js.map",
+    "787.355f7509.chunk.js.map": "/leave_management_assignment/static/js/787.355f7509.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d8d5ccf3.css",
+    "static/js/main.1a691699.js"
+  ]
+}
