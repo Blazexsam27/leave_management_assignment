@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .signup-container .header p{
@@ -20,6 +21,15 @@
     color: var(--header-color);
 }
 
+.signup-container .header .menu a{
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: var(--header-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #fff;
+}
 .signup-container .auth-form-container{
     width: 50%;
     background: var(--asphalt-color);
@@ -54,7 +64,7 @@
 
 .signup-container .auth-form-container .signup-form .signup-image{
     object-fit: contain;
-    max-width: 65%;
+    max-width: 64%;
     align-self: center;
 }
 
@@ -116,9 +126,15 @@
     .signup-container .auth-form-container .signup-form{
         width: 90%;
         height: 35vh;
+        margin-top: 40rem;
     }
     .signup-container .auth-form-container .login-account-btn{
         font-size: 5rem;
     }
-
+    .signup-container .header .menu{
+        height: 40px;
+    }
+    .signup-container .header .menu a{
+        font-size: 3rem;
+    }
 }
