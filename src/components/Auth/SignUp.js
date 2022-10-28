@@ -41,9 +41,6 @@ export default function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name);
-    console.log(email);
-    console.log(password);
     if (!errors) alert("Form Has Errors");
     else {
       fetch("https://dkgicggupnrxldwvkeft.supabase.co/auth/v1/signup", {
