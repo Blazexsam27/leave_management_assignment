@@ -123,7 +123,7 @@ const deleteLeave = async (leave_id) => {
   );
 };
 
-module.exports = {
+export {
   parseDate,
   getLeavesInRange,
   deleteLeave,
