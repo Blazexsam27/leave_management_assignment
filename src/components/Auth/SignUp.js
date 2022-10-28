@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Auth/SignUp.css";
 import signup from "../../assets/images/sign_up.png";
-import { saveTokens } from "../../services/authServices";
+import { setCookie } from "../../services/authServices";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -62,7 +62,7 @@ export default function SignUp() {
         }),
       }).then((response) => {
         response.json().then((result) => {
-          saveTokens(result);
+          setCookie(result);
           navigate("/", { state: { message: "Account Created Successfully" } });
         });
       });
